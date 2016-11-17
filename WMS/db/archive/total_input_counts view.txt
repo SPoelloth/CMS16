@@ -1,0 +1,9 @@
+SELECT 
+  SUM(m.InputCounts) AS TotalInputCounts,
+  tr.TemplateId AS TemplateId
+FROM
+  template_row tr
+LEFT JOIN
+  module m ON m.ID = tr.ModuleId
+GROUP BY
+  tr.TemplateId

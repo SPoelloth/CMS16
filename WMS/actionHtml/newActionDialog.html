@@ -1,0 +1,148 @@
+
+ <div>
+	<ul class="list-group" id='listGroupBody'>
+	
+	  <li class="list-group-item singleRow" style='vertical-align:middle; line-height:34px;border-bottom:1px dotted black; margin-bottom:0px;'>
+		<table>
+			<tbody>
+				<tr>
+					<td style='width:15%;text-align:center;'>			
+						<b><span>Action name:</span></b>	
+					</td>
+					<td style='width:85%;float:left;' id='actionName'>
+						<input type='text' class='form-control' placeholder='Please enter an name for this action'></input>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>  
+	  
+	  <li class="list-group-item singleRow" style='vertical-align:middle; line-height:34px;'>
+		<table>
+			<tbody>
+				<tr>
+					<td style='width:6%;text-align:center;'>			
+						<b><span>If</span></b>	
+					</td>
+					<td style='width:25%;float:left;'>
+						<button class='btn btn-success' id='btnChooseTriggerElement' style='margin-left:5px;'><span class='glyphicon glyphicon-hand-up' style='padding-right: 10px;'></span>Choose element</button>	
+						<div style='display:none;'></div>
+					</td>
+					<td id='chosenTriggerInformation' style='width:auto;text-align:left;float:left;'>			
+						<b><span><i>No element chosen</i></span></b>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>  
+	  
+	  <li class="list-group-item singleRow selectTriggerOperationRow" style='vertical-align:middle; line-height:34px;'>
+		<table>
+			<tbody>
+				<tr>
+					<td class='standardElementToShow' style='width:6%;text-align:center;display:none;'>			
+						<b><span>is</span></b>	
+					</td> 
+					<td class='standardElementToShow' style='width:auto;float:left;margin-right:10px;display:none;' id='triggerOperator'>
+						<select class='form-control'>
+							<option selected>Please select a trigger element</option>
+						</select>
+					</td>
+					<td style='width:auto;float:left;display:none;' id='triggerValueCheckAndRadio'>
+						<select class='form-control'>
+							<option value='checked' selected>checked</option>
+						</select>
+					</td>
+					<td style='width:auto;float:left;display:none;' id='triggerValueCheckbutton'>
+						<select class='form-control'>
+							<option value='confirmed' selected>confirmed</option>
+							<option value='skipped'>skipped</option>
+						</select>
+					</td>					
+					<td style='width:auto;float:left;display:none;' id='triggerValueInput'>
+						<input type='text' class='form-control' placeholder='Enter your value here'></input>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>  
+	  
+	  <li class="list-group-item singleRow selectAffectedElementOrRow firstOfItsKind" style='vertical-align:middle; line-height:34px;'>
+		<table>
+			<tbody>
+				<tr>
+					<td class='standardElementToShow' style='width:6%;text-align:center;display:none;'>			
+						<b><span>then</span></b>	
+					</td>
+					<td class='standardElementToShow' style='width:auto;float:left;margin-right:5px;display:none;' id='actionResult'>
+						<select class='form-control'>
+							<option value='skipRow' selected>skip</option>
+							<option value='confirmRow'>confirm</option>
+							<option value='checkElement'>check</option>
+							<option value='insertElement'>insert in</option>
+						</select>
+					</td>
+					<td class='standardElementToShow' style='width:auto;float:left;margin-right:5px;display:none;' id='actionResultEffectsRow'>
+						<select class='form-control'>
+							<option value='row' selected>row</option>
+						</select>
+					</td>
+					<td style='width:auto;float:left;margin-right:5px;display:none;' id='actionResultEffectsElement'>
+						<select class='form-control'>
+							<option value='singleElement'>single element</option>
+						</select>
+					</td>
+					<td class='standardElementToShow' style='width:auto;float:left;display:none;'>
+						<button class='btn btn-success btnChooseAffectedElementOrRow' style='margin-left:5px;'><span class='glyphicon glyphicon-hand-up' style='padding-right: 10px;'></span><span>Choose row</span></button>
+					</td>
+					<td class='standardElementToShow' id='chosenAfftectedRowOrElementInformation' style='width:auto;text-align:left;float:left;display:none;margin-left:5px;'>			
+						<b><span><i>No element chosen</i></span></b>
+					</td>
+					<td style='width:auto;float:right;display:none;'>
+						<button class='btn btn-danger btnDeleteEntryAffectedElementOrRow' style='margin-left:5px;'><span class='glyphicon glyphicon-remove'></span></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>   
+	  
+	  <li class="list-group-item singleRow selectAffectedElementInput" style='vertical-align:middle; line-height:34px;display:none;'>
+		<table>
+			<tbody>
+				<tr>
+					<td class='standardElementToShow' style='width:6%;text-align:center;'>			
+						<b><span>value</span></b>	
+					</td>
+
+					<td class='standardElementToShow' style='width:80%;float:left;margin-right:10px;' id='actionResultInputValue'>
+						<input class='form-control' placeholder='What should be inserted into this field?'>
+						</input>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>   	  	  
+	  
+	  <li class="list-group-item singleRow addAnotherAffectedRow" style='vertical-align:middle; line-height:34px;'>
+		<table>
+			<tbody>
+				<tr>						
+					<td class='standardElementToShow' style='width:auto;float:left;display:none;margin-left:50px;'>
+						<button class='btn btn-primary btnAddAnotherAffectedRow btnIsNotInitialized'><span class='glyphicon glyphicon-plus' style='padding-right: 10px;'></span><span>Add another affected element or row</span></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	  </li>  
+	</ul>
+</div>
+
+<style>
+	.singleRow{
+		border: none;
+	}
+	.singleRow:hover{
+		background-color: white;
+	}
+	
+</style>

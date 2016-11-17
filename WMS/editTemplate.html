@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<!--MAIN CONTENT-->
+	<div class="row">
+		<div id="hiddenTemplateId" style="display: none;"></div>
+		<div class="col-md-12">
+			<div id="container">
+				<div id="list">
+					<p class='templateButtonRow' style="margin-top: 50px;">
+						<a class="btn addNewModule btn-primary" href="#" role="button"><span class='glyphicon glyphicon-plus' style='padding-right:10px'></span>Add a Module</a>
+						<a class="btn saveAll btn-primary" href="#" role="button"><span class='glyphicon glyphicon-floppy-save' style='padding-right:10px'></span>Save All</a>
+						<a class="btn printAll btn-primary" href="#" role="button"><span class='glyphicon glyphicon-print' style='padding-right:10px'></span>Print</a>
+						<a class="btn duplicateTemplate btn-primary" href="#" role="button"><span class='glyphicon glyphicon-duplicate' style='padding-right:10px'></span>Duplicate</a>
+						<a class="btn showHelp btn-primary" href="#" role="button"><span class='glyphicon glyphicon-education' style='padding-right:10px'></span>Help</a>
+					</p>
+					<div class='templateHeader'></div>								
+					
+					<ul id="items-list" style="margin-top: 0px;">
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div> 	
+				
+	<footer>
+		<hr>							
+		<p>Author: EG-8-US-23, <span  class='templateCreatorUsername'></span>, <span  class='currentDateStamp'></span></p>
+		<p>Approved: EG-8-US-23, Volker Bochen, <span  class='currentDateStamp'></span></p>
+	</footer>
+
+	<div>
+		<!-- POP UP PICTURE DIALOG -->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			
+				<div class="modal-header modal-header-success">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="gridSystemModalLabel"><b>Picture management</b></h4>
+				</div>
+			  
+				<div class="modal-body">
+					<form action="db/db_upload.php" class="dropzone" id="my-dropzone"></form>
+					<div id="hiddenmcid" style="display: none;"></div>
+					<div id="hiddenrowpos" style="display: none;"></div>	
+				</div>
+			
+			</div>
+		  </div>
+		</div>
+		
+		<!-- POP UP MODULE DIALOG -->
+		<div class="modal fade bs-modul-dialog" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+			
+				<div class="modal-header modal-header-success">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="gridSystemModalLabel"><b>Module selection</b></h4>
+				</div>
+			  
+				<div class="modal-body">
+					<ul class="disabled" id="modal-items-list">				
+					</ul>			
+				</div>
+			
+			</div>
+		  </div>
+		</div>		
+	</div>
+
+	
+	
+	<!-- DROPZONE -->
+	<link href="css/dropzone.css" type="text/css" rel="stylesheet" />
+	<script src="js/dropzone.js"></script>
+	<script src="js/myCustomDropZone.js"></script> 
+
+	<!-- COLOR PICKER -->
+	<script src='js/spectrum.js'></script>
+	<link rel='stylesheet' href='css/spectrum.css' />
+		
+	<!-- TEMPLATE -->
+	<script type="text/javascript" src="js/templateFunctions.js"></script>
+	
+	<!-- TEMPLATE ACTION -->
+	<script type="text/javascript" src="js/templateActionFunctions.js"></script>	
+	
+	<!-- Custom CSS -->
+	<link href="css/template.css" type="text/css" rel="stylesheet" />	
+
+</html>
+
+
+
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">	
+
+	<div class='col-md-12' style='text-align:center;margin-bottom:25px;'>
+		<button class='btn btn-primary' id='addNewUser'>
+			<span class='glyphicon glyphicon-plus' style='padding-right: 10px;'></span>
+			Add new user
+		</button>
+	</div>
+	
+
+	<div class="row" id="contentContainer">
+		
+		<div class="col-md-6 usersContainer solidBorder" id="normalUserContainer">
+			<div class="usersDescription">
+				<h2><span class="glyphicon glyphicon-ice-lolly"></span></h2>
+				<h4>Users with normal privileges:</h4>
+			</div>
+			<div class="usersContent" id="normalUsers">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Users</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: left;">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		
+		<div class="col-md-6 usersContainer solidBorder" id="adminUserContainer" style='border-left:none;'>
+			<div class="usersDescription">
+				<h2><span class="glyphicon glyphicon-education"></span></h2>
+				<h4>Users with admin privileges:</h4>
+			</div>
+			<div class="usersContent" id="adminUsers"> 
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Users</th>
+						</tr>
+					</thead>
+					<tbody style="text-align: left;">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>		
+	
+	<!-- Make some space to the footer -->
+	<div class="double-line"><br></div>
+
+	<!-- Include the script -->
+	<script type="text/javascript" src="js/userManagement.js"></script>
+</html>
+
+
+
+
+

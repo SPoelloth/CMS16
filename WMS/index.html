@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+	
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="js/helper.js"></script>
+	
+    <!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+	
+	<!-- BOOTSTRAP DIALOG -->
+	<script type="text/javascript" src='js/bootstrap-dialog.min.js'></script>
+	<link rel='stylesheet' href='css/bootstrap-dialog.min.css'/>
+	
+	<!-- Custom CSS -->
+	<link href="css/template.css" type="text/css" rel="stylesheet" />	
+	
+	<!-- GENERAL FUNCTIONS -->
+	<script type="text/javascript" src="js/generalFunctions.js"></script>
+
+	<title>Worksheet Management System</title>
+	
+  </head>
+
+  <!-- BODY -->
+  <body>
+	<!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-static-top navbar-dark bg-inverse fixed" style='width: 100%; background-color:white;'>
+      <ul class="nav navbar-nav" style='width: 50%'>
+		<li class="nav-item active">
+          <a class="navbar-brand" href="#" onclick="enterUserManagement(true, null);"><b>WMS</b></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html" ><span class='glyphicon glyphicon-home' style='padding-right:5px'></span>Home <span class="sr-only">(current)</span></a> 
+        </li>
+		<li class="nav-item active">
+           <a class="nav-link" href="index.html?site=showUser"><span class='glyphicon glyphicon-user' style='padding-right:5px'></span><span id="hiddenUsername"></span><span class="sr-only"></span></a>
+        </li>
+      </ul> 
+	  <ul class="nav navbar-nav" id='additionalNavBar' style='width: 50%;'>
+		<li class="nav-item active" style='float:right;margin-right:20px;'>
+          <a class="nav-link" href="index.html?site=showCS"><span class='glyphicon glyphicon-stats' style='padding-right:5px'></span>CS<span class="sr-only">(current)</span></a> 
+        </li>
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="index.html?site=selWs"><span class='glyphicon glyphicon-tasks' style='padding-right:5px'></span>WS<span class="sr-only">(current)</span></a> 
+        </li>		
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="index.html?site=selTp"><span class='glyphicon glyphicon-pencil' style='padding-right:5px'></span>Edit<span class="sr-only">(current)</span></a> 
+        </li>		
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="index.html?site=showTemplate" ><span class='glyphicon glyphicon-plus' style='padding-right:5px'></span>New<span class="sr-only">(current)</span></a> 
+        </li>		
+      </ul>   
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron wmsHeader" style="margin-top: 50px;">
+      <div class="container" style="text-align: center;">
+        <h1 class="display-3"><b>W</b>orksheet <b>M</b>anagement <b>S</b>ystem</h1>
+        <p>Manage your Worksheets with the Worksheet Management System! Create, Edit or Select them here.</p>   
+      </div>
+    </div>
+
+	<!-- MAINCONTAINER -->
+    <div class="container">
+		<div class="maincontainer">	  
+		</div>
+		<footer id="standardFooter">
+			<p></p>
+		</footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+	<script type="text/javascript" src="js/index.js"></script>
+	
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+  </body>
+</html>

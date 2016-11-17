@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!--*****************************-->
+<!--HEAD-->
+<!--*****************************-->
+
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>WMS</title>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- DROPZONE -->
+	<link href="css/dropzone.css" type="text/css" rel="stylesheet" />
+	<script src="js/dropzone.js"></script>
+	<script src="js/myCustomDropZone.js"></script>
+
+	<!-- COLOR PICKER -->
+	<script src='js/spectrum.js'></script>
+	<link rel='stylesheet' href='css/spectrum.css'/>	
+	
+	<!-- BOOTSTRAP DIALOG -->
+	<script src='js/bootstrap-dialog.min.js'></script>
+	<link rel='stylesheet' href='css/bootstrap-dialog.min.css'/>	
+	
+	<!-- NEW TEMPLATE -->
+	<link href="css/template.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/newTemplate.js"></script>
+
+	<!-- EDIT TEMPLATE -->
+	<script type="text/javascript" src="js/templateEditFunctions.js"></script>
+	<script type="text/javascript" src="js/generalFunctions.js"></script>
+
+</head>
+
+
+<!--*****************************-->
+<!--BODY-->
+<!--*****************************-->
+<body>
+
+	
+	<!--NAVIGATION-->
+    <nav class="navbar navbar-static-top navbar-dark bg-inverse fixed" style='width: 100%'>
+      <ul class="nav navbar-nav" style='width: 50%'>
+		<li class="nav-item active">
+          <a class="navbar-brand" href="#" onclick="enterUserManagement(true, null);"><b>WMS</b></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html" ><span class='glyphicon glyphicon-home' style='padding-right:5px'></span>Home <span class="sr-only">(current)</span></a> 
+        </li>
+		<li class="nav-item active">
+           <a class="nav-link" href="index.html?site=showUser"><span class='glyphicon glyphicon-user' style='padding-right:5px'></span><span id="hiddenUsername"></span><span class="sr-only"></span></a>
+        </li>
+      </ul> 
+	  <ul class="nav navbar-nav" id='additionalNavBar' style='width: 50%;'>
+		<li class="nav-item active" style='float:right;margin-right:20px;'>
+          <a class="nav-link" href="index.html?site=showCS"><span class='glyphicon glyphicon-stats' style='padding-right:5px'></span>CS<span class="sr-only">(current)</span></a> 
+        </li>
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="index.html?site=selWs"><span class='glyphicon glyphicon-tasks' style='padding-right:5px'></span>WS<span class="sr-only">(current)</span></a> 
+        </li>		
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="index.html?site=editTp"><span class='glyphicon glyphicon-pencil' style='padding-right:5px'></span>Edit<span class="sr-only">(current)</span></a> 
+        </li>		
+		<li class="nav-item active" style='float:right'>
+          <a class="nav-link" href="newTemplate.html" ><span class='glyphicon glyphicon-plus' style='padding-right:5px'></span>New<span class="sr-only">(current)</span></a> 
+        </li>		
+      </ul>   
+    </nav>
+	
+	<!-- / NAVIGATION-->
+		<!--MAIN CONTENT-->
+	<div class="container">
+		<div id="hiddenTemplateId" style="display: none;"></div>
+			<div class="maincontainer">
+			<!-- Example row of columns -->			
+				<div class="row">
+					<div class="col-md-12">
+						<div id="container">
+						  <div id="list">
+							<p style="margin-top: 50px;">
+								<a class="btn addNewModule btn-primary" href="#" role="button"><span class='glyphicon glyphicon-plus' style='padding-right:10px'></span>Add a Module</a>
+								<a class="btn saveAll btn-primary" href="#" role="button"><span class='glyphicon glyphicon-floppy-save' style='padding-right:10px'></span>Save All</a>
+								<a class="btn printAll btn-primary" href="#" role="button"><span class='glyphicon glyphicon-print' style='padding-right:10px'></span>Print</a>
+							</p>
+							<div class='templateHeader'></div>
+					
+							<ul id="items-list">							
+							</ul>
+						  </div>
+						</div>
+					</div>
+				</div> 				
+			</div>
+		<footer>
+		<hr>		
+	
+		<p>Author: EG-8-US-23, <span  class='templateCreatorUsername'></span>, <span  class='currentDateStamp'></span></p>
+		<p>Approved: EG-8-US-23, Volker Bochen, <span  class='currentDateStamp'></span></p>
+		<div id="copyRightYear"></div>
+		
+		<div id="testcontainer"></div>
+		
+		</footer>
+	</div> 
+	
+	<!-- / MAIN CONTENT-->
+	<div id="response"> </div>
+	
+<script>
+	var myFooter = sessionStorage.getItem("footer");
+	if(myFooter === null) {
+		alter("There is a problem with the session storage. Please reload initial page!");
+	} else {
+		document.getElementById("copyRightYear").innerHTML = myFooter;
+	}
+	
+
+</script> 
+	
+</body>
+
+<footer>
+	<!-- POP UP PICTURE DIALOG -->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		
+			<div class="modal-header modal-header-success">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="gridSystemModalLabel"><b>Picture Management</b></h4>
+			</div>
+		  
+			<div class="modal-body">
+				<form action="db/db_upload.php" class="dropzone" id="my-dropzone"></form>
+				<div id="hiddenmcid" style="display: none;"></div>
+				<div id="hiddenrowpos" style="display: none;"></div>				
+			</div>
+		
+		</div>
+	  </div>
+	</div>
+	
+	<!-- POP UP MODULE DIALOG -->
+	<div class="modal fade bs-modul-dialog" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+		
+			<div class="modal-header modal-header-success">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="gridSystemModalLabel"><b>Module selection</b></h4>
+			</div>
+		  
+			<div class="modal-body">
+				<ul class="disabled" id="modal-items-list">				
+				</ul>			
+			</div>
+		
+		</div>
+	  </div>
+	</div>	
+</footer>
+
+
+</html>
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--MAIN CONTENT-->
+		
+	<div class="row" style='margin-top: 60px;'>
+		<div id="hiddenWorksheetId" style="display: none;"></div>
+		<div id="hiddenTemplateId" style="display: none;"></div>
+		<div class="col-md-12" style='text-align: center;'>
+			<p>
+				<a class="btn printAll btn-primary" href="#" role="button"' style='width: 110px;' ><span class='glyphicon glyphicon-print' style='padding-right:10px'></span>Print</a>
+				<a class="btn deleteWorksheet btn-danger" href="#" role="button" style="width: 110px; margin-left: 5px; display:none;"><span class='glyphicon glyphicon-trash' style='padding-right:10px'></span>Delete</a>
+			</p>
+		</div>
+	
+		<div class="col-md-12 documentframe">
+			<!-- <div id="container"> -->
+			<div id="worksheetContainer">
+				<div class="col-md-12">
+					<h2 class="centerHeadline" id="templateHeadlineName">Worksheet Name</h2>
+				</div>
+				<div class="col-md-3">
+					No:
+					<div class="secondHeadline" id="templateNo">Text</div>			
+				</div>				
+				<div class="col-md-2">
+					Version:
+					<div class="secondHeadline" id="templateVersion">Text</div>
+				</div>
+				<div class="col-md-2">
+					Status:
+					<div class="secondHeadline" id="templateStatus">Text</div>
+				</div>
+				<div class="col-md-3">
+					Valid for:
+					<div class="secondHeadline" id="templateValidFor">Text</div>			
+				</div>	
+				<div class="col-md-2">
+					Category:
+					<div class="secondHeadline" id="templateCategory">Text</div>			
+				</div>	
+				<div class="col-md-12"><br></div>
+				<div class="col-md-12">
+					<div id="list">								
+						<ul id="items-list">
+						</ul>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+				
+	
+	<footer>
+		<hr>							
+		<p>Document author: EG-8-US-23, <span  id='worksheetAuthorQtbNumber'></span>, <span  id='worksheetCreationDate'></span></p>
+		<p>Template author: EG-8-US-23, <span  id='templateAuthor'></span>, <span  id='templateCreationDate'></span></p>
+		<p>Approved: EG-8-US-23, Volker Bochen<span  class='currentDateStamp'></span></p>
+		<div id="copyRightYear"></div>
+	</footer>
+
+	<!-- SELECT WORKSHEET -->
+	<script type="text/javascript" src="js/selectWorksheet.js"></script>
+	<script type="text/javascript" src="js/velocity.min.js"></script>
+	<script type="text/javascript" src="js/worksheetActionFunctions.js"></script>
+	
+</html>
+
+
+

@@ -1,0 +1,41 @@
+SELECT
+  (SELECT u.QtbNumber FROM USER u WHERE u.Id = wc.ResponsiblePersonId) AS WorksheetContentCreator,
+  tr.RowNo AS TemplateRowNo,
+  mc.Position AS ColumnPosition,
+  mc.Size AS ColumnSize,
+  wc.Value AS WorksheetContentValue,
+  wc.TimeStamp AS WorksheetContentTimeStamp,
+  trc.Value AS TemplateRowContentValue,
+  trc.ReplaceNumberByTom AS TemplateReplaceNumberByTom,
+  e.HtmlCode,
+  tr.ColorCode AS TemplateRowColorCode,  
+  t.Name AS TemplateName,
+  t.No AS TemplateNo,
+  t.VersionNo AS TemplateVersionNo,
+  t.Status AS TemplateStatus,
+  t.ValidFor AS TemplateValidFor,
+  t.CategoryId AS TemplateCategoryId,
+  wc.ModuleColumnId,
+  mc.ElementId,  
+  tr.ModuleId,
+  wc.TemplateRowId,
+  wc.WorksheetId,
+  t.Id AS TemplateId
+FROM
+  worksheet_content wc
+LEFT JOIN
+  worksheet w ON w.Id = wc.WorksheetId AND w.Id = 11
+LEFT JOIN
+  template t ON t.Id = w.TemplateId
+INNER JOIN
+  template_row tr ON tr.TemplateId = w.TemplateId AND wc.TemplateRowId = tr.Id
+INNER JOIN
+  template_row_content trc ON trc.TemplateRowId = tr.Id AND trc.ModuleColumnId = wc.ModuleColumnId
+INNER JOIN
+  module_column mc ON mc.Id = wc.ModuleColumnId
+INNER JOIN
+  module m ON m.Id = tr.ModuleId
+INNER JOIN
+  element e ON e.Id = mc.ElementId
+ORDER BY
+  tr.RowNo, mc.Position ASC
