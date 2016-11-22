@@ -1,18 +1,18 @@
-$(document).ready($(function(){ 	
+$(document).ready($(function(){
 
 	//*************************************
 	// Initialize
 	//*************************************
 	//Hide the header
-	$(document).find('.wmsHeader').show();	
-	
-	var $qtbNumber = sessionStorage.getItem('qtbNumber');	
+	$(document).find('.wmsHeader').show();
+
+	var $qtbNumber = sessionStorage.getItem('qtbNumber');
 
 	$.ajax({
 		type: "POST",
 		url: 'db/db_getUserByQtbNumber.php',
-		data: {'qtbNumber': $qtbNumber},	
-		dataType:'json',			
+		data: {'username': $qtbNumber, 'password': ''},	
+		dataType:'json',
 		success: function(data){
 			var $container = $('#userInformationContainer');
 			if(data.length > 0){
@@ -24,10 +24,9 @@ $(document).ready($(function(){
 			} else {
 				showBootstrapInfoDialog("The DB doesn't know you!", "Your qtb-number can't be found in the DB. How did you even get here?", 'warning');
 			}
-		}				
+		}
 	}).fail(function(){
 		showBootstrapInfoDialog("Error", "Can't get user from DB!", 'danger');
 	});
-		
+
 }));
-	

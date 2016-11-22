@@ -23,7 +23,7 @@
 	text-align: center;
 	padding: 0px 0px 0px 0px;
 	height: 100%;
-} 
+}
 
 .usersDescription{
 	border-bottom: 1px solid black;
@@ -95,13 +95,13 @@
 	text-align: center;
 	padding: 0px 0px 0px 0px;
 	height: 100%;
-} 
+}
 
 .solidBorder{
 	border-width: 1px;
 	border-color: black;
 	border-style: solid;
-} 
+}
 
 .solidBorderRight{
 	border-right: 1px solid black;
@@ -223,7 +223,7 @@ ul {
 }
 
 #checkBoxRight {
-   margin-right:5px; 
+   margin-right:5px;
 }
 
 
@@ -240,7 +240,7 @@ div.documentframe{
 }
 
 button.editableDisableButton {
-	font-weight: bold;	
+	font-weight: bold;
 	width:100%;
 }
 
@@ -258,7 +258,7 @@ div.jumbotron{
 	width:100%;
 }
 
-input[type="text"] {
+input[type="text"]:not(.form-control) {
 	width: 99%;
 	height: 30px;
 }
@@ -266,7 +266,7 @@ input[type="text"] {
 .templateCategory{
     height: 30px;
     width: 100%;
-	
+
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -296,7 +296,7 @@ input#templateHeadlineName{
 } */
 
 span.list-group-item.col-xs-2.buttonColumn{
-	border: 0;    
+	border: 0;
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
@@ -306,7 +306,7 @@ h2.centerHeadline {
 	font-size: 5.6rem;
     letter-spacing: -2px;
     text-indent: -3px;
-    font-family: "Open Sans";    
+    font-family: "Open Sans";
     border-radius: 5px;
 	    margin-bottom: 30px;
 }
@@ -352,7 +352,7 @@ input.editableRadiobutton{
 
 table {
 	width: 100%;
-} 
+}
 
 #rightS {
 	width: 20%;
@@ -379,7 +379,7 @@ li:hover{
 .bs-callout {
     padding: 20px;
     margin: 20px 0;
-    border: 1px solid #eee; 
+    border: 1px solid #eee;
 }
 
 .dropzone .dz-preview .dz-image {
@@ -495,11 +495,11 @@ li:hover{
 	box-shadow: 0 0 25px 10px rgba(77,244,77, .6);
 	z-index: 50;
 	position: relative;
-	cursor: cell;	
+	cursor: cell;
 }
 
 .selectedWholeAffectedRow *:hover{
-	cursor: cell;	
+	cursor: cell;
 }
 
 /* Already affected stuff */

@@ -5,16 +5,16 @@
 // templateName out of the data array
 //******************************************************
 function getHighestTemplateVersionWithName(data, templateName) {
-	var currentHighestVersion = {dataIndex: null, versionHighNumber: null, versionLowNumber: null};			
-				
+	var currentHighestVersion = {dataIndex: null, versionHighNumber: null, versionLowNumber: null};
+
 	//Finding the highest versionNo of the template with the same name
- 	$.each(data, function(index, element) {	
-	
+ 	$.each(data, function(index, element) {
+
 		if(templateName === element.Name){
 			var tmpSplitVersionNumber = element.VersionNo.split(".");
 			var tmpVersionHighNumber = Number(tmpSplitVersionNumber[0]);
 			var tmpVersionLowNumber = Number(tmpSplitVersionNumber[1]);
-			
+
 			//It is the first element found with the same name
 			if(currentHighestVersion.dataIndex === null){
 				currentHighestVersion.dataIndex = index;
@@ -34,9 +34,9 @@ function getHighestTemplateVersionWithName(data, templateName) {
 					currentHighestVersion.versionLowNumber = tmpVersionLowNumber;
 				}
 			}
-		}				
-	});	 
-	
+		}
+	});
+
 	return currentHighestVersion;
 }
 
@@ -67,8 +67,8 @@ function setUserInformation(){
 	if(!sessionStorage.getItem('FirstName')) {
 		$.ajax({
 				type: "POST",
-				url: 'db/db_getUserByQtbNumber.php',		
-				data: {'qtbNumber': sessionStorage.getItem('qtbNumber')},
+				url: 'db/db_getUserByQtbNumber.php',
+				data: {'username': sessionStorage.getItem('qtbNumber'), 'password': ''},
 				dataType:'json',
 				success: function(data){
 					if(data.length > 0){
@@ -79,10 +79,10 @@ function setUserInformation(){
 						sessionStorage.removeItem('qtbNumber');
 						location.href = 'index.html';
 					}
-				}				
+				}
 			}).fail(function(){
 				alert("Error - Can't get user information from DB.");
-		});  
+		});
 	} else {
 		$("#hiddenUsername").text(sessionStorage.getItem('FirstName') + " " + sessionStorage.getItem('LastName') + " (" + sessionStorage.getItem('qtbNumber') + ")");
 	}
@@ -106,7 +106,7 @@ function setPageSetupRegistry(properties, wsh){
 	wsh.RegWrite(keyPage+'footer', properties['footer'], 'REG_SZ');
 	wsh.RegWrite(keyPage+'header', properties['header'], 'REG_SZ');
 	wsh.RegWrite(keyPage+'Print_Background', properties['printBackground'], 'REG_SZ');
-	
+
 	return true;
 }
 
@@ -114,7 +114,7 @@ function setPageSetupRegistry(properties, wsh){
 //*************************************
 // Read current registry print settings
 //*************************************
-function readPageSetupRegistry(wsh){	
+function readPageSetupRegistry(wsh){
 	var keyPage = 			'HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\PageSetup\\';
 	var $footer, $header, $printBackground;
 	//Try to read  all initial reg keys first. If they don't exist an error is thrown and catch. Then the reg key is created.
@@ -142,8 +142,8 @@ function readPageSetupRegistry(wsh){
 		footer: 			$footer,
 		header: 			$header,
 		printBackground: 	$printBackground
-	}; 
-	
+	};
+
 	return properties;
 }
 
@@ -152,7 +152,7 @@ function readPageSetupRegistry(wsh){
 // Function to set the background-color
 // important for printing
 //*************************************
-(function($) {    
+(function($) {
   if ($.fn.style) {
     return;
   }
@@ -245,7 +245,7 @@ function getUrlParameter(sParam) {
 function showBootstrapInfoDialog($title, $message, $level) {
 	var $dialogType, $buttonType;
 	switch($level) {
-		case 'warning': 
+		case 'warning':
 			$dialogType = BootstrapDialog.TYPE_WARNING;
 			$buttonType = 'btn-warning';
 			break;
@@ -255,11 +255,11 @@ function showBootstrapInfoDialog($title, $message, $level) {
 			break;
 		case 'danger':
 			$dialogType = BootstrapDialog.TYPE_DANGER;
-			$buttonType = 'btn-danger';	
+			$buttonType = 'btn-danger';
 			break;
 		case 'success':
 			$dialogType = BootstrapDialog.TYPE_SUCCESS;
-			$buttonType = 'btn-success';		
+			$buttonType = 'btn-success';
 			break;
 		default:
 			$dialogType = BootstrapDialog.TYPE_Primary;
@@ -271,8 +271,8 @@ function showBootstrapInfoDialog($title, $message, $level) {
 		type: $dialogType,
 		title: $title,
 		message: $message,
-		draggable: true, 
-		closable: true, 
+		draggable: true,
+		closable: true,
 		buttons: [{
 			label: "Close",
 			cssClass: $buttonType,
@@ -288,7 +288,7 @@ function showBootstrapInfoDialog($title, $message, $level) {
 function showBootstrapConfirmDialog($title, $message, $level, $callback) {
 	var $btnOkLevel, $dialogType;
 	switch($level) {
-		case 'warning': 
+		case 'warning':
 			$dialogType = BootstrapDialog.TYPE_WARNING;
 			$btnOkLevel = 'btn-warning';
 			break;
@@ -298,27 +298,27 @@ function showBootstrapConfirmDialog($title, $message, $level, $callback) {
 			break;
 		case 'danger':
 			$dialogType = BootstrapDialog.TYPE_DANGER;
-			$btnOkLevel = 'btn-danger';	
+			$btnOkLevel = 'btn-danger';
 			break;
 		case 'success':
 			$dialogType = BootstrapDialog.TYPE_SUCCESS;
-			$btnOkLevel = 'btn-success';		
+			$btnOkLevel = 'btn-success';
 			break;
 		default:
 			$dialogType = BootstrapDialog.TYPE_Primary;
 			$btnOkLevel = 'btn-primary';
 			break;
-	}	
-	
+	}
+
 	var $dialog = BootstrapDialog.confirm({
 		title: $title,
 		message: $message,
-		type: $dialogType, 
-		closable: true, 
-		draggable: true, 
-		btnOKLabel: 'Confirm', 
-		btnOKClass: $btnOkLevel,		
-		btnCancelLabel: 'Cancel', 
+		type: $dialogType,
+		closable: true,
+		draggable: true,
+		btnOKLabel: 'Confirm',
+		btnOKClass: $btnOkLevel,
+		btnCancelLabel: 'Cancel',
 		btnCancelClass: 'btn-danger',
 		callback: function(result) {if ($callback) $callback(result)}
 	});
@@ -338,18 +338,18 @@ function enterUserManagement(setUrl, callback) {
 	return $.ajax({
 		type: "POST",
 		url: 'db/db_getUserByQtbNumber.php',
-		data: {'qtbNumber': $qtbNumber},	
-		dataType:'json',			
+		data: {'username': $qtbNumber, 'password': ''},
+		dataType:'json',
 		success: function(data){
 			//var $container = $('#userInformationContainer');
 			if(data.length > 0){
 				if(data[0].GroupName === 'admin'){
 					if(setUrl){
 						location.href = 'index.html?site=userManagement';
-					} 
+					}
 					if(callback !== null){
 						callback(true);
-					}	
+					}
 				} else {
 					if(callback !== null){
 						callback(false);
@@ -363,7 +363,7 @@ function enterUserManagement(setUrl, callback) {
 					callback(false);
 				}
 			}
-		}				
+		}
 	}).fail(function(){
 		showBootstrapInfoDialog("Error", "Can't get user from DB!", 'danger');
 		if(callback !== null){
@@ -390,7 +390,7 @@ $.fn.hasAttr = function (attrName) {
 	if (typeof attr !== typeof undefined && attr !== false) {
 		return true;
 	}
-	
+
     return false;
 }
 
@@ -480,19 +480,19 @@ $.event.special.tripleclick = {
         if(clicks === 1) {
             start = new Date().getTime();
         }
-        
+
         if ( clicks === 3 ) {
             clicks = 0;
 
             // set event type to "tripleclick"
             event.type = "tripleclick";
-            
+
             // let jQuery handle the triggering of "tripleclick" event handlers
             $elem.trigger('tripleclick');
         }
-        
+
         $elem.data('clicks', clicks);
         $elem.data('startTimeTC', start);
     }
-    
+
 };
