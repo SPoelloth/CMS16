@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-	include("db_connect.php");	
+	include("db_connect.php");
 
 	//Variables needed for the inserts
 	$actionName = $mysqli->real_escape_string($_POST['actionName']);
@@ -18,23 +18,23 @@
 		$actionQuery .= "INSERT INTO action(TemplateRowId, TriggerElementModuleColumnId, TriggerValueOperatorId, TriggerValue, ActionCreatorId, ActionName) VALUES(";
 		$actionQuery .= $mysqli->real_escape_string($triggerElement['trid']) . ", " . $mysqli->real_escape_string($triggerElement['mcid']) . ", ";
 		$actionQuery .= $mysqli->real_escape_string($triggerElement['triggerOperatorId']) . ", '" . $mysqli->real_escape_string($triggerElement['triggerValue']) . "', ";
-		$actionQuery .= "(SELECT Id FROM user WHERE QtbNumber = '" . $actionCreatorQtb . "'), '" . $actionName . "')";
-		
+		$actionQuery .= "(SELECT Id FROM user WHERE Username = '" . $actionCreatorQtb . "'), '" . $actionName . "')";
+
 	//It's an update
 	} else {
 		$actionQuery .= "UPDATE action SET TemplateRowId=" . $mysqli->real_escape_string($triggerElement['trid']) . ", TriggerElementModuleColumnId=" . $mysqli->real_escape_string($triggerElement['mcid']);
 		$actionQuery .= ", TriggerValueOperatorId=" . $mysqli->real_escape_string($triggerElement['triggerOperatorId']) . ", TriggerValue='" . $mysqli->real_escape_string($triggerElement['triggerValue']);
-		$actionQuery .= "', ActionCreatorId=(SELECT Id FROM user WHERE QtbNumber='" . $actionCreatorQtb . "'), ActionName='" . $actionName . "' WHERE Id=" . $actionId;	
+		$actionQuery .= "', ActionCreatorId=(SELECT Id FROM user WHERE Username='" . $actionCreatorQtb . "'), ActionName='" . $actionName . "' WHERE Id=" . $actionId;
 	}
 	//Execute Query
 	$result = $mysqli->query($actionQuery);
 	if(!$result) {
 		echo "$actionQuery";
 		die("Couldn't create or update action:" . mysql_error());
-	}	
+	}
 	//Save actionId for further use	if it was an insert
 	if(is_null($actionId)){
-		$actionId = $mysqli->insert_id;	
+		$actionId = $mysqli->insert_id;
 	//Otherwise delete all old entries linked to this action in the action_result_element and action_result_row table
 	} else {
 		$deleteQuery = "DELETE FROM action_result_element WHERE ActionId=" . $actionId . "; ";
@@ -47,42 +47,42 @@
 			while ($mysqli->next_result()) {;} // flush multi_queries
 		}
 	}
-	
+
 	$insertAffectedRowsAndElementsQuery = "";
 	//NOW INSERT ALL AFFECTED ROWS
 	if(!is_null($affectedRowsArray)){
-		foreach ($affectedRowsArray as $affectedRow) {	
+		foreach ($affectedRowsArray as $affectedRow) {
 			$insertAffectedRowsAndElementsQuery .= "INSERT INTO action_result_row(ActionId, ActionResultTemplateRowId, OrderNo, ActionResultRowValue) VALUES(";
 			$insertAffectedRowsAndElementsQuery .= 	$actionId . ", " . $mysqli->real_escape_string($affectedRow['trid']) . ", "	. $mysqli->real_escape_string($affectedRow['orderNo']);
 			$insertAffectedRowsAndElementsQuery .= ", '" . $mysqli->real_escape_string($affectedRow['actionResult']) . "'); ";
 		}
 	}
-	
+
 	//NOW INSERT ALL AFFECTED ELEMENTS
 	if(!is_null($affectedElementsArray)){
-		foreach ($affectedElementsArray as $affectedElement) {	
+		foreach ($affectedElementsArray as $affectedElement) {
 			$insertAffectedRowsAndElementsQuery .= "INSERT INTO action_result_element(ActionId, ActionResultModuleColumnId, ActionResultTemplateRowId, OrderNo, ";
 			$insertAffectedRowsAndElementsQuery .= "ActionResult, ActionResultInputValue) VALUES(" . $actionId . ", ";
 			$insertAffectedRowsAndElementsQuery .= $mysqli->real_escape_string($affectedElement['mcid']) . ", " . $mysqli->real_escape_string($affectedElement['trid']);
-			$insertAffectedRowsAndElementsQuery .= ", " . $mysqli->real_escape_string($affectedElement['orderNo']); 
+			$insertAffectedRowsAndElementsQuery .= ", " . $mysqli->real_escape_string($affectedElement['orderNo']);
 			$insertAffectedRowsAndElementsQuery .= ", '" . $mysqli->real_escape_string($affectedElement['actionResult']) . "', ";
 			//Add NULL or the input value as ActionResultInputValue if the affected element is an input
 			if(strcmp($mysqli->real_escape_string($affectedElement['actionResult']), 'insertElement') === 0){
 				$insertAffectedRowsAndElementsQuery .= "'" . $mysqli->real_escape_string($affectedElement['actionResultInputValue']) . "'); ";
 			} else {
 				$insertAffectedRowsAndElementsQuery .= "NULL); ";
-			}		
+			}
 		}
 	}
-	
+
 	//Run multi-query for the rows and elements
 	if (!$mysqli->multi_query($insertAffectedRowsAndElementsQuery)) {
 		echo "$insertAffectedRowsAndElementsQuery";
 		die("Couldn't insert affected action rows and elements in DB:" . mysql_error());
 	} else {
 		while ($mysqli->next_result()) {;} // flush multi_queries
-	}	
-	
+	}
+
 	$returnData['actionId'] = $actionId;
 	echo json_encode($returnData);
 	$mysqli->close();

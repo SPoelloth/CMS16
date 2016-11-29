@@ -67,16 +67,16 @@ function setUserInformation(){
 	if(!sessionStorage.getItem('FirstName')) {
 		$.ajax({
 				type: "POST",
-				url: 'db/db_getUserByQtbNumber.php',
-				data: {'username': sessionStorage.getItem('qtbNumber'), 'password': ''},
+				url: 'db/db_getUserInfos.php',
+				data: {'username': sessionStorage.getItem('username')},
 				dataType:'json',
 				success: function(data){
 					if(data.length > 0){
 						sessionStorage.setItem('FirstName', data[0].FirstName);
 						sessionStorage.setItem('LastName', data[0].LastName);
-						$("#hiddenUsername").text(data[0].FirstName + " " + data[0].LastName + " (" + sessionStorage.getItem('qtbNumber') + ")");
+						$("#hiddenUsername").text(data[0].FirstName + " " + data[0].LastName + " (" + sessionStorage.getItem('username') + ")");
 					} else {
-						sessionStorage.removeItem('qtbNumber');
+						sessionStorage.removeItem('username');
 						location.href = 'index.html';
 					}
 				}
@@ -84,7 +84,7 @@ function setUserInformation(){
 				alert("Error - Can't get user information from DB.");
 		});
 	} else {
-		$("#hiddenUsername").text(sessionStorage.getItem('FirstName') + " " + sessionStorage.getItem('LastName') + " (" + sessionStorage.getItem('qtbNumber') + ")");
+		$("#hiddenUsername").text(sessionStorage.getItem('FirstName') + " " + sessionStorage.getItem('LastName') + " (" + sessionStorage.getItem('username') + ")");
 	}
 }
 
@@ -333,12 +333,12 @@ function showBootstrapConfirmDialog($title, $message, $level, $callback) {
 // the user management
 //*******************************************
 function enterUserManagement(setUrl, callback) {
-	var $qtbNumber = sessionStorage.getItem('qtbNumber');
+	var $qtbNumber = sessionStorage.getItem('username');
 	console.log("QTB number: " + $qtbNumber);
 	return $.ajax({
 		type: "POST",
-		url: 'db/db_getUserByQtbNumber.php',
-		data: {'username': $qtbNumber, 'password': ''},
+		url: 'db/db_getUserInfos.php',
+		data: {'username': $qtbNumber},
 		dataType:'json',
 		success: function(data){
 			//var $container = $('#userInformationContainer');
@@ -357,7 +357,7 @@ function enterUserManagement(setUrl, callback) {
 				}
 			} else {
 				showBootstrapInfoDialog("The DB doesn't know you!", "Your qtb-number can't be found in the DB. How did you even get here?", 'warning');
-				sessionStorage.removeItem('qtbNumber');
+				sessionStorage.removeItem('username');
 				location.href = 'index.html';
 				if(callback !== null){
 					callback(false);

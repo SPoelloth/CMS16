@@ -191,7 +191,7 @@ $(document).ready($(function(){
 				var $worksheetContent = [];
 				var $worksheetId = $("#hiddenWorksheetId").text();
 				var $templateRowId = $(e).closest('li').attr('trid');
-				var $responsiblePersonId = sessionStorage.getItem('qtbNumber');	
+				var $responsiblePersonId = sessionStorage.getItem('username');	
 				
 				$.each($worksheetContentElements, function(index, element) {
 					//all inputs of type text

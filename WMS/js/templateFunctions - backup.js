@@ -121,7 +121,7 @@
 	$('.saveAll').on('click', function() {	
 		
 		//information for table template	
-		var $tmpAuthor = sessionStorage.getItem('qtbNumber');		
+		var $tmpAuthor = sessionStorage.getItem('username');		
 		var $tmpHeadlineName = $('input#templateHeadlineName').val();
 		var $tmpNo = $('#templateNo').val();
 		var $tmpVersionNo = $('#templateVersion').val();

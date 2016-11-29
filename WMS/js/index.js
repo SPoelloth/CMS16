@@ -30,7 +30,7 @@ $(document).ready($(function(){
 //*************************************
 function initPage(){
 	var site = getUrlParameter('site');
-	var user = sessionStorage.getItem('qtbNumber');
+	var user = sessionStorage.getItem('username');
 	if(!user){
 		$('#standardFooter').show();
 		$( ".maincontainer" ).load("loginBar.html", function(){
@@ -155,7 +155,7 @@ function initLoginButton(){
 
 		$.ajax({
 			type: "POST",
-			url: 'db/db_getUserByQtbNumber.php',
+			url: 'db/db_checkUser.php',
 			data: {'username': $('#username').val(), 'password': $('#password').val()},
 			dataType:'json',
 		}).fail(function(){
@@ -164,8 +164,8 @@ function initLoginButton(){
 			if(data.length === 0){
 				showBootstrapInfoDialog("Incorrect user or password", "Your username or password is incorrect. Please contact the administrator.", 'info');
 			} else {
-				sessionStorage.setItem('qtbNumber', username.toLowerCase());
-				console.log("qtb number is: " + sessionStorage.getItem('qtbNumber'));
+				sessionStorage.setItem('username', username);
+				console.log("username is: " + sessionStorage.getItem('username'));
 				$('#additionalNavBar').show();
 			}
 			initPage();
