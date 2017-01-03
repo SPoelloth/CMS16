@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+	<div class="row">
+
+		<div class='col-md-12 add-new-user-container'>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_new_user_dialog">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    			Add new user
+			</button>
+		</div>
+
+		<div class="col-md-6">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Users with normal privileges
+					</h3>
+			  </div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Username</th>
+							<th>ID</th>
+						</tr>
+					</thead>
+					<tbody id="normalUserTable">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Users with admin privileges
+					</h3>
+			  </div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Username</th>
+							<th>ID</th>
+						</tr>
+					</thead>
+					<tbody id="adminUserTable">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="modal fade" id="add_new_user_dialog" tabindex="-1" role="dialog" aria-labelledby="addNewUserModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="gridSystemModalLabel">Create new user</h4>
+	      </div>
+	      <div class="modal-body">
+			  <form class='form-horizontal' role='form'>
+		          <div class='form-group'>
+		              <label class='control-label col-sm-4' for='add_new_user_first_name'>
+		                  First name:
+		              </label>
+		              <div class='col-sm-8'>
+		                  <input type='text' class='form-control' id='add_new_user_first_name' placeholder='First name'>
+		              </div>
+		          </div>
+		          <div class='form-group'>
+		              <label class='control-label col-sm-4' for='add_new_user_last_name'>
+		                  Last name:
+		              </label>
+		              <div class='col-sm-8'>
+		                  <input type='text' class='form-control' id='add_new_user_last_name' placeholder='Last name'>
+		              </div>
+		          </div>
+		          <div class='form-group'>
+		              <label class='control-label col-sm-4' for='add_new_user_username'>
+		                  Username:
+		              </label>
+		              <div class='col-sm-8'>
+		                  <input type='text' class='form-control' id='add_new_user_username' placeholder='Username'>
+		              </div>
+		          </div>
+		          <div class='form-group'>
+		              <label class='control-label col-sm-4' for='add_new_user_password'>
+		                  Password:
+		              </label>
+		              <div class='col-sm-8'>
+		                  <input type='password' class='form-control' id='add_new_user_password' placeholder='Password'>
+		              </div>
+		          </div>
+		          <div class='form-group'>
+		              <label class='control-label col-sm-4' for='add_new_user_usergroup'>
+		                  User Group:
+		              </label>
+		              <div class='col-sm-8'>
+		                  <select class='form-control' id='add_new_user_usergroup'>
+		                      <option value='admin'>
+		                          Admin
+		                      </option>
+		                      <option value='normal' selected>
+		                          Normal
+		                      </option>
+		                  </select>
+		              </div>
+		          </div>
+		      </form>
+		  </div>
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-danger" data-dismiss="modal">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    			Close
+			</button>
+			<button type="button" class="btn btn-primary" id="add_new_user_save_btn">
+				<span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+    			Save
+			</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- Include the script -->
+	<script type="text/javascript" src="js/userManagement.js"></script>
+
+
+   <!-- Templates -->
+   <script type="text/html" id="user_popover">
+	   <div>
+		   <form class='form-horizontal' role='form'>
+			   <div class='form-group'>
+				   <label class='control-label col-sm-4' for='user_popover_first_name'>
+					   First name:
+			   	   </label>
+		   	   	   <div class='col-sm-8'>
+					   <input type='text' class='form-control' id='user_popover_first_name' value='<%= first_name %>'>
+				   </div>
+			   </div>
+			   <div class='form-group'>
+				   <label class='control-label col-sm-4' for='user_popover_last_name'>
+					   Last name:
+				   </label>
+				   <div class='col-sm-8'>
+					   <input type='text' class='form-control' id='user_popover_last_name' value='<%= last_name %>'>
+				   </div>
+			   </div>
+			   <div class='form-group'>
+				   <label class='control-label col-sm-4' for='user_popover_username'>
+					   Username:
+				   </label>
+				   <div class='col-sm-8'>
+					   <input type='text' class='form-control' id='user_popover_username' value='<%= username %>'>
+				   </div>
+			   </div>
+			   <div class='form-group'>
+				   <label class='control-label col-sm-4' for='user_popover_password'>
+					   Password:
+				   </label>
+				   <div class='col-sm-8'>
+					   <input type='password' class='form-control' id='user_popover_password' value='<%= password %>'>
+				   </div>
+			   </div>
+			   <div class='form-group'>
+				   <label class='control-label col-sm-4' for='user_popover_usergroup'>
+					   User Group:
+				   </label>
+				   <div class='col-sm-8'>
+					   <select class='form-control' id='user_popover_usergroup'>
+						   <option value='admin'  <%= select_admin %>>Admin</option>
+						   <option value='normal' <%= select_normal %>>Normal</option>
+					   </select>
+				   </div>
+			   </div>
+		   </form>
+		   <div class='form-group'>
+			   <div class='col-sm-2'>
+				   <button class='btn btn-default user-popover-cancel' data-id='<%= id %>'>
+					   <span class='glyphicon glyphicon-remove'></span>
+					   Cancel
+				   </button>
+			   </div>
+			   <div class='col-sm-offset-2 col-sm-2'>
+				   <button type='submit' class='btn btn-primary user-popover-save'>
+					   <span class='glyphicon glyphicon-floppy-save'></span>
+					   Save
+				   </button>
+			   </div>
+			   <div class='col-sm-offset-1 col-sm-2'>
+				   <button class='btn btn-danger user-popover-delete'>
+					   <span class='glyphicon glyphicon-floppy-remove'></span>
+					   Delete user
+				   </button>
+			   </div>
+		   </div>
+	   </div>
+   </script>
+
+</html>

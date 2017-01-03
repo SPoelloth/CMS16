@@ -111,24 +111,24 @@ function initSelectionBarItems(){
 	// New Template Button
 	//*************************************
 	$("#selectionBar #newTemplateButton").click(function(event){
-		//$( ".maincontainer" ).load( "newTemplate.html" );
-		//location.href = "index.html?site=showTemplate";
+		$( ".maincontainer" ).load( "newTemplate.html" );
+		location.href = "index.html?site=showTemplate";
 	});
 
 	//*************************************
 	// Edit Template Button
 	//*************************************
 	$("#selectionBar #editTemplateButton").click(function(event){
-		//$( ".maincontainer" ).load( "selectTemplateListModule.html" );
-		//location.href = "index.html?site=selTp";
+		$( ".maincontainer" ).load( "selectTemplateListModule.html" );
+		location.href = "index.html?site=selTp";
 	});
 
 	//*************************************
 	// Select Worksheet Button
 	//*************************************
 	$("#selectionBar #selectWorksheetButton").click(function(event){
-		//$( ".maincontainer" ).load( "selectWorksheetListModule.html" );
-		//location.href = "index.html?site=selWs";
+		$( ".maincontainer" ).load( "selectWorksheetListModule.html" );
+		location.href = "index.html?site=selWs";
 	});
 }
 

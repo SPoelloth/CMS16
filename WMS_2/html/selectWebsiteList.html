@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <h2>Select A Website:</h2>
+
+    <div class="list-group" id="select_website_list">
+
+    </div>
+
+    <script type="text/html" id="select_website_list_item">
+        <a href='index.html?site=showWebsite&websiteid=<%= website_id %>' class='list-group-item'>
+            <b><%= index %></b> <%= website_name %>
+        </a>
+    </script>
+
+
+	<script type="text/javascript" src="js/selectWebsiteList.js"></script>
+
+</html>

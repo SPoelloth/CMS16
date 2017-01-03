@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <h2>Select A Template:</h2>
+
+    <div class="list-group row" id="select_template_list">
+
+    </div>
+
+
+    <script type="text/html" id="select_template_list_item">
+        <a template-id="<%= id %>" href="index.html?site=showTemplate&templateid=<%= id %>" class="list-group-item col-xs-10">
+            <%= name %>
+        </a>
+        <span class='list-group-item col-xs-2 select-template-list-delete-container'>
+            <button template-id="<%= id %>" type='button' class='btn btn-danger select-template-delete'>
+                <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
+            </button>
+        </span>
+    </script>
+
+	<script type="text/javascript" src="js/selectTemplateList.js"></script>
+
+</html>
