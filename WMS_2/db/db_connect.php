@@ -2,7 +2,7 @@
 $dbhost							= "localhost";
 $dbuser							= "root";
 $dbpass							= "";
-$dbname							= "wms_2";
+$dbname							= "wms";
 
 $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

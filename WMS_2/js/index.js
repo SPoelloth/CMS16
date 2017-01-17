@@ -38,10 +38,16 @@ function initPage(){
 			case 'selectWebsite':
 				setUserInformation(false);
 				$( ".maincontainer" ).load( "html/selectWebsiteList.html" );
+				var userGroupID = sessionStorage.getItem('UserGroupID');
+				if(userGroupID != '6')
+					$( ".not_normal" ).hide();
 				break;
 			case 'showUser':
 				setUserInformation(false);
 				$( ".maincontainer" ).load( "html/userInformation.html" );
+				var userGroupID = sessionStorage.getItem('UserGroupID');
+				if(userGroupID != '6')
+					$( ".not_normal" ).hide();
 				break;
 
 			case 'userManagement':
@@ -50,14 +56,20 @@ function initPage(){
 					if(permitted){
 						setUserInformation(false);
 						$( ".maincontainer" ).load( "html/userManagement.html" );
+						var userGroupID = sessionStorage.getItem('UserGroupID');
+						if(userGroupID != '6')
+							$( ".not_normal" ).hide();
 					} else {
 						location.href = 'index.html';
 					}
 				});
 				break;
 			case 'showWebsite':
-				$( ".maincontainer" ).load( "showWebsite.html" );
+				$( ".maincontainer" ).load( "html/showWebsite.html" );
 				setUserInformation(false);
+				var userGroupID = sessionStorage.getItem('UserGroupID');
+				if(userGroupID != '6')
+					$( ".not_normal" ).hide();
 				break;
 			case 'showTemplate':
 				setUserInformation(false);
@@ -72,6 +84,7 @@ function initPage(){
 					$( ".maincontainer" ).load("html/selectionBar.html");
 				else {
 					$( ".maincontainer" ).load("html/selectionBarNormal.html");
+					$( ".not_normal" ).hide();
 				}
 				$(document).find('.wms-jumbotron').show();
 				break;
@@ -79,10 +92,12 @@ function initPage(){
 	} else if(user !== null && site == null){
 		setUserInformation(false);
 		var userGroupID = sessionStorage.getItem('UserGroupID');
-		if(userGroupID == '6')
+		if(userGroupID == '6') {
 			$( ".maincontainer" ).load("html/selectionBar.html");
+		}
 		else {
 			$( ".maincontainer" ).load("html/selectionBarNormal.html");
+			$( ".not_normal" ).hide();
 		}
 		$(document).find('.wms-jumbotron').show();
 	}

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
-    <h2>Select A Website:</h2>
+    <h2>Select A Template:</h2>
 
-    <div class="list-group" id="select_website_list">
+    <div class="list-group row" id="select_template_list">
 
     </div>
 
-    <script type="text/html" id="select_website_list_item">
-        <a href='index.html?site=showWebsite&websiteid=<%= website_id %>' class='list-group-item'>
-            <b><%= index %></b> <%= website_name %>
+
+    <script type="text/html" id="select_template_list_item">
+        <a template-id="<%= id %>" href="index.html?site=showWebsite&templateid=<%= id %>" class="list-group-item col-xs-10">
+            <%= name %>
         </a>
+
     </script>
 
-
-	<script type="text/javascript" src="js/selectWebsiteList.js"></script>
+	<script type="text/javascript" src="js/selectTemplateList.js"></script>
 
 </html>
